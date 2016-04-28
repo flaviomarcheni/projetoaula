@@ -45,7 +45,7 @@ public class LoginActivity extends AppCompatActivity {
 
     @OnClick(R.id.btn_login)
     void login(){
-        if(senha.getText().toString().equalsIgnoreCase("1") && userEmail.getText().toString().equalsIgnoreCase("1")){
+        if(senha.getText().toString().equalsIgnoreCase("admin") && userEmail.getText().toString().equalsIgnoreCase("admin")){
             Prefs.putBoolean("isAuth", true);
             Prefs.putString("user", userEmail.getText().toString());
             Intent intent = new Intent(this,MainActivity.class);

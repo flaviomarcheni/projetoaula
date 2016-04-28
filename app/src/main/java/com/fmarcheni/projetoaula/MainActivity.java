@@ -46,22 +46,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 .build();
         initToolBar();
         initDrawer();
-
-        Toast.makeText(getApplicationContext(),"Inbox Selected",Toast.LENGTH_SHORT).show();
         MainFragment fragment = new MainFragment();
-        android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.frame,fragment);
-        fragmentTransaction.commit();
-//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
-//            }
-//        });
-
-
+        setNewRootFragment(fragment);
     }
 
     public void openDrawer(){
@@ -93,7 +79,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
+        //getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
 
@@ -126,24 +112,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            Long save = new User("1", "2", "3").save();
-            Log.i("XXXXXXX", save.toString());
+        if (id == R.id.nav_inicio) {
+         //   Long save = new User("1", "2", "3").save();
+          //  Log.i("XXXXXXX", save.toString());
             // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-            List<User> execute = new Select().from(User.class).execute();
-
-            for (User u : execute) {
-                Log.i("XXXXXXX", u.getId().toString());
-                u.delete();
-            }
-
-        } else if (id == R.id.nav_slideshow) {
-            setNewRootFragment(new CreateUserFragment());
-        } else if (id == R.id.nav_manage) {
             setNewRootFragment(new MainFragment());
-        } else if (id == R.id.nav_share) {
-
+        } else if (id == R.id.nav_calc) {
+            setNewRootFragment(new CreateUserFragment());
         } else if (id == R.id.nav_logoff) {
             Prefs.putBoolean("isAuth", false);
             Intent intent = new Intent(this, LoginActivity.class);

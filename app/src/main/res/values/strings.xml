@@ -31,4 +31,5 @@
     <string name="facebook_app_id">Your facebook app id</string>
     <string name="account">Conta</string>
     <string name="logoff">Sair</string>
+    <string name="calcular_imc">Calcular IMC</string>
 </resources>
