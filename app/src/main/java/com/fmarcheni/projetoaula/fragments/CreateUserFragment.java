@@ -1,6 +1,8 @@
 package com.fmarcheni.projetoaula.fragments;
 
-import android.support.v7.widget.Toolbar;
+import android.app.Activity;
+import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -54,6 +56,16 @@ public class CreateUserFragment extends BaseFragment {
             DecimalFormat df = new DecimalFormat("#.00");
             txtResult.setText("IMC: "+df.format(imc)+"\nResultado: "+result);
         }
+
+
+        InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Activity.INPUT_METHOD_SERVICE);
+        //Find the currently focused view, so we can grab the correct window token from it.
+        View view = getActivity().getCurrentFocus();
+        //If no view currently has focus, create a new one, just so we can grab a window token from it
+        if (view == null) {
+            view = new View(getActivity());
+        }
+        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
 
     }
 
