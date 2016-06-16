@@ -113,9 +113,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         int id = item.getItemId();
 
         if (id == R.id.nav_inicio) {
-         //   Long save = new User("1", "2", "3").save();
-          //  Log.i("XXXXXXX", save.toString());
-            // Handle the camera action
             setNewRootFragment(new MainFragment());
         } else if (id == R.id.nav_calc) {
             setNewRootFragment(new CreateUserFragment());

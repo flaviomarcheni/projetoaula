@@ -94,6 +94,14 @@
                     android:background="@drawable/login_btn_selector"
                     android:text="@string/action_sign_in" />
 
+                <Button
+                    android:id="@+id/btn_novo_usuario"
+                    style="?android:textAppearanceSmall"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/grey_0"
+                    android:layout_marginTop="5dp"
+                    android:text="@string/register" />
             </LinearLayout>
         </LinearLayout>
 

@@ -54,9 +54,13 @@ public class LoginActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Usuário ou senha inválidos.",Toast.LENGTH_SHORT).show();
             senha.setText("");
         }
-
     }
 
+    @OnClick(R.id.btn_novo_usuario)
+    void novoUsuario(){
+        Intent t = new Intent(this, CreateUser.class);
+        startActivity(t);
+    }
     @Override
     protected void onDestroy() {
         super.onDestroy();

@@ -7,9 +7,13 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.activeandroid.Model;
+import com.activeandroid.query.Select;
 import com.fmarcheni.projetoaula.R;
+import com.fmarcheni.projetoaula.model.User;
 
 import java.text.DecimalFormat;
+import java.util.List;
 
 import butterknife.Bind;
 import butterknife.OnClick;
@@ -55,6 +59,7 @@ public class CreateUserFragment extends BaseFragment {
 
             DecimalFormat df = new DecimalFormat("#.00");
             txtResult.setText("IMC: "+df.format(imc)+"\nResultado: "+result);
+
         }
 
 
@@ -76,6 +81,18 @@ public class CreateUserFragment extends BaseFragment {
 
     @OnClick(R.id.btn_limpar)
     public void limparTela(){
+
+        User user = new User();
+        user.setEmail("xx");
+        user.setName("xxx");
+        user.setPassword("xxx");
+        user.save();
+
+        List<User> execute = new Select().from(User.class).execute();
+        for (User u : execute) {
+            System.out.println(u);
+
+        }
         txtPeso.setText("");
         txtAltura.setText("");
         txtResult.setText("");

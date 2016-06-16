@@ -11,18 +11,27 @@ import com.activeandroid.annotation.Table;
 public class User extends Model{
 
 
-    @Column(index = true, name = "name")
+    @Column(index = true, name = "name", length = 100, notNull = false)
     private  String  name;
-    @Column(index = true, name = "email")
+    @Column(index = true, name = "email",unique = true, notNull = false, length = 50)
     private   String  email;
-    @Column( name = "password")
+    @Column( name = "password", notNull = false)
     private  String password;
 
     public User() {
 
     }
 
-    public User( String name, String email, String password) {
+    @Override
+    public String toString() {
+        return "User{" +
+                "name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                '}';
+    }
+
+    public User(String name, String email, String password) {
         this.name = name;
         this.email = email;
         this.password = password;
