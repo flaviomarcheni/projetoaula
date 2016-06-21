@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.fmarcheni.projetoaula.model.User;
 import com.pixplicity.easyprefs.library.Prefs;
 
 import butterknife.Bind;
@@ -39,17 +40,21 @@ public class LoginActivity extends AppCompatActivity {
         if(Prefs.getBoolean("isAuth", false)){
             Intent intent = new Intent(this,MainActivity.class);
             startActivity(intent);
+            finish();
         }
     }
 
 
     @OnClick(R.id.btn_login)
     void login(){
-        if(senha.getText().toString().equalsIgnoreCase("admin") && userEmail.getText().toString().equalsIgnoreCase("admin")){
+
+        User u = User.findByUserAndPassword(userEmail.getText().toString(), senha.getText().toString());
+        if(u!=null){
             Prefs.putBoolean("isAuth", true);
-            Prefs.putString("user", userEmail.getText().toString());
+            Prefs.putString("user", u.getEmail());
             Intent intent = new Intent(this,MainActivity.class);
             startActivity(intent);
+            finish();
         }else{
             Toast.makeText(getApplicationContext(), "Usuário ou senha inválidos.",Toast.LENGTH_SHORT).show();
             senha.setText("");
@@ -58,7 +63,7 @@ public class LoginActivity extends AppCompatActivity {
 
     @OnClick(R.id.btn_novo_usuario)
     void novoUsuario(){
-        Intent t = new Intent(this, CreateUser.class);
+        Intent t = new Intent(this, CreateUserActivity.class);
         startActivity(t);
     }
     @Override

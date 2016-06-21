@@ -3,30 +3,20 @@ package com.fmarcheni.projetoaula;
 import android.content.ContextWrapper;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Toast;
 
-import com.activeandroid.Model;
-import com.activeandroid.query.Select;
 import com.fmarcheni.projetoaula.fragments.BaseFragment;
 import com.fmarcheni.projetoaula.fragments.CreateUserFragment;
 import com.fmarcheni.projetoaula.fragments.MainFragment;
-import com.fmarcheni.projetoaula.model.User;
 import com.pixplicity.easyprefs.library.Prefs;
-
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private Toolbar toolbar;
@@ -120,6 +110,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             Prefs.putBoolean("isAuth", false);
             Intent intent = new Intent(this, LoginActivity.class);
             startActivity(intent);
+            finish();
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

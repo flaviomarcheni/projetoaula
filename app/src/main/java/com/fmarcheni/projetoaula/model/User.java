@@ -1,8 +1,11 @@
 package com.fmarcheni.projetoaula.model;
 
+import android.text.TextUtils;
+
 import com.activeandroid.Model;
 import com.activeandroid.annotation.Column;
 import com.activeandroid.annotation.Table;
+import com.activeandroid.query.Select;
 
 /**
  * Created by flavi on 22/04/2016.
@@ -31,13 +34,33 @@ public class User extends Model{
                 '}';
     }
 
-    public User(String name, String email, String password) {
+    public User(String name, String email, String password)  throws Exception{
         this.name = name;
         this.email = email;
         this.password = password;
+        if(name==null || name.isEmpty() || name.length() <3){
+            throw  new Exception("O nome deve ter no mínimo 3 letras.");
+        }
+        if(password==null || password.isEmpty() || password.length() <6){
+            throw  new Exception("A senha deve ter no mínimo 6 caracters.");
+        }
+        if(!isValidEmail(email)){
+            throw  new Exception("Email inválido");
+        }
 
     }
 
+    public final static boolean isValidEmail(String target) {
+        return !TextUtils.isEmpty(target) && android.util.Patterns.EMAIL_ADDRESS.matcher(target).matches();
+    }
+
+    public static User findByUserAndPassword(String user, String password) {
+        return new Select()
+                .from(User.class)
+                .where("email = ?", user)
+                .and("password =?",password)
+                .executeSingle();
+    }
     public String getName() {
         return name;
     }
