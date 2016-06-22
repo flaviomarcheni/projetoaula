@@ -51,7 +51,7 @@ public class LoginActivity extends AppCompatActivity {
         User u = User.findByUserAndPassword(userEmail.getText().toString(), senha.getText().toString());
         if(u!=null){
             Prefs.putBoolean("isAuth", true);
-            Prefs.putString("user", u.getEmail());
+            Prefs.putLong("user_id", u.getId());
             Intent intent = new Intent(this,MainActivity.class);
             startActivity(intent);
             finish();

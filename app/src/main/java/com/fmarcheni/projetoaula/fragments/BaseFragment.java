@@ -38,7 +38,7 @@ public abstract class BaseFragment extends Fragment {
         if(!hasCustomToolbar()) return;
         mToolbar = ButterKnife.findById(view,getToolbarId());
         mToolbar.setTitle(getTitle());
-       // mToolbar.setNavigationIcon(R.drawable.ic_menu);
+      // mToolbar.setNavigationIcon(R.drawable.ic_menu_laucher);
         mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

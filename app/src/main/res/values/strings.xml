@@ -37,4 +37,7 @@
     <string name="account">Conta</string>
     <string name="logoff">Sair</string>
     <string name="calcular_imc">Calcular IMC</string>
+    <string name="senha_atual">Senha atual</string>
+    <string name="new_password">Nova Senha</string>
+    <string name="update_data">Alterar dados</string>
 </resources>

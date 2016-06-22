@@ -49,6 +49,18 @@ public class User extends Model{
         }
 
     }
+    public User(String name, String email)  throws Exception{
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        if(name==null || name.isEmpty() || name.length() <3){
+            throw  new Exception("O nome deve ter no mínimo 3 letras.");
+        }
+        if(!isValidEmail(email)){
+            throw  new Exception("Email inválido");
+        }
+
+    }
 
     public final static boolean isValidEmail(String target) {
         return !TextUtils.isEmpty(target) && android.util.Patterns.EMAIL_ADDRESS.matcher(target).matches();
@@ -88,5 +100,18 @@ public class User extends Model{
     }
 
 
+    public static User findByEmail(String email) {
+        return new Select()
+                .from(User.class)
+                .where("email = ?", email)
+                .executeSingle();
+    }
 
+    public static User findById(Long id) {
+        System.out.println(id);
+        return new Select()
+                .from(User.class)
+                .where( "id=?", id)
+                .executeSingle();
+    }
 }

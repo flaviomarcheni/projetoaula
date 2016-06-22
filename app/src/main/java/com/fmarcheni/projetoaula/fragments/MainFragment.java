@@ -3,6 +3,7 @@ package com.fmarcheni.projetoaula.fragments;
 import android.widget.TextView;
 
 import com.fmarcheni.projetoaula.R;
+import com.fmarcheni.projetoaula.model.User;
 import com.pixplicity.easyprefs.library.Prefs;
 
 import butterknife.Bind;
@@ -22,6 +23,8 @@ public class MainFragment extends BaseFragment {
     @Override
     public void onResume() {
         super.onResume();
-        textInicio.setText("Bem vindo: "+ Prefs.getString("user",""));
+        User u = User.findById(Prefs.getLong("user_id",0));
+        System.out.println(u);
+        textInicio.setText("Bem vindo: "+u.getName()+"\n "+u.getEmail());
     }
 }

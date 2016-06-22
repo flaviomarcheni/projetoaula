@@ -14,8 +14,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.fmarcheni.projetoaula.fragments.BaseFragment;
-import com.fmarcheni.projetoaula.fragments.CreateUserFragment;
 import com.fmarcheni.projetoaula.fragments.MainFragment;
+import com.fmarcheni.projetoaula.fragments.UpdateUserFragment;
 import com.pixplicity.easyprefs.library.Prefs;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -105,7 +105,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (id == R.id.nav_inicio) {
             setNewRootFragment(new MainFragment());
         } else if (id == R.id.nav_calc) {
-            setNewRootFragment(new CreateUserFragment());
+            setNewRootFragment(new UpdateUserFragment());
         } else if (id == R.id.nav_logoff) {
             Prefs.putBoolean("isAuth", false);
             Intent intent = new Intent(this, LoginActivity.class);

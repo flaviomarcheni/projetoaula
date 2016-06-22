@@ -28,7 +28,11 @@ public class CreateUserActivity extends AppCompatActivity {
     @OnClick(R.id.btn_save)
     public void salvar(){
         try {
-            User u = new User(emailTxt.getText().toString(), nomeTxt.getText().toString(), senhaTxt.getText().toString());
+            User u = new User(emailTxt.getText().toString().trim(), nomeTxt.getText().toString().trim(), senhaTxt.getText().toString().toString());
+            User userCheck = User.findByEmail(u.getEmail());
+            if(userCheck!=null){
+                throw new Exception("O email informado já existe.");
+            }
             u.save();
             Toast.makeText(this, "Usuário salvo com sucesso.",Toast.LENGTH_SHORT).show();
             finish();
